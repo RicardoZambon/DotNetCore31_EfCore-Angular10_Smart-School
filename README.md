@@ -1,0 +1,1 @@
+# DotNetCore31_EfCore-Angular10_Smart-School

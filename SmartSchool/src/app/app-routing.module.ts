@@ -6,10 +6,11 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { ProfessoresComponent } from './professores/professores.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'alunos', component: AlunosComponent},
   { path: 'perfil', component: PerfilComponent },
-  { path: 'professores', component: ProfessoresComponent },
-  { path: 'alunos', component: AlunosComponent}
+  { path: 'professores', component: ProfessoresComponent }
 ];
 
 @NgModule({

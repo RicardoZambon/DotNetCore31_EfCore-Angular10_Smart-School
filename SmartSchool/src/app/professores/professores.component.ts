@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Professor } from '../models/professor';
+import { Professor } from '../models/Professor';
 
 @Component({
   selector: 'app-professores',

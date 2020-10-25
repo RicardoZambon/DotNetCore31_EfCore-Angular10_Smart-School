@@ -1,6 +1,25 @@
 <div *ngIf="professorSelecionado">
-    <app-titulo [titulo]="'Professor: ' + professorSelecionado"></app-titulo>
-    <button class="btn btn-secondary" (click)="voltar()">Voltar</button>
+    
+    <div class="row">
+        <div class="col mr-auto">
+            <app-titulo [titulo]="'Professor: ' + professorSelecionado.id"></app-titulo>
+        </div>
+        <div class="col-auto mt-1">
+            <button class="btn btn-warning" (click)="voltar()">Lista de professores</button>
+        </div>
+    </div>
+
+    <form>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" value="{{ professorSelecionado.nome }}">
+        </div>
+        <div class="mb-3">
+            <label for="disciplina" class="form-label">Disciplina</label>
+            <input type="text" class="form-control" id="disciplina" value="{{ professorSelecionado.disciplina }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 
 <div *ngIf="!professorSelecionado">

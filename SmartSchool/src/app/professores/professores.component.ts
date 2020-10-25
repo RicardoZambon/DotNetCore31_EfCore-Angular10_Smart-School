@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProfessoresComponent implements OnInit {
 
   public titulo = "Professores";
+  public professorSelecionado: number;
 
   public professores = [
     { id: 1, nome: 'Lauro', disciplina: 'Matemática' },
@@ -20,6 +21,14 @@ export class ProfessoresComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selecionaProfessor(professor: any): void {
+    this.professorSelecionado = professor.id;
+  }
+
+  voltar() {
+    this.professorSelecionado = null;
   }
 
 }

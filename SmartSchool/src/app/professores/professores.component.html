@@ -1,22 +1,31 @@
-<app-titulo [titulo]=titulo></app-titulo>
+<div *ngIf="professorSelecionado">
+    <app-titulo [titulo]="'Professor: ' + professorSelecionado"></app-titulo>
+    <button class="btn btn-secondary" (click)="voltar()">Voltar</button>
+</div>
 
-<div class="card overflow-hidden">
-    <div class="card-body p-0">
-        <table class="table mb-0 table-hover">
-            <thead class="bg-primary text-white">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Disciplina</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let professor of professores">
-                    <th scope="row">{{ professor.id }}</th>
-                    <td>{{ professor.nome }}</td>
-                    <td>{{ professor.disciplina }}</td>
+<div *ngIf="!professorSelecionado">
+    <app-titulo [titulo]=titulo></app-titulo>
+
+    Nenhum professor selecionado
+
+    <div class="card overflow-hidden">
+        <div class="card-body p-0">
+            <table class="table mb-0 table-hover">
+                <thead class="bg-primary text-white">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Disciplina</th>
                 </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let professor of professores" style="cursor: pointer;" (click)="selecionaProfessor(professor)">
+                        <th scope="row">{{ professor.id }}</th>
+                        <td>{{ professor.nome }}</td>
+                        <td>{{ professor.disciplina }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

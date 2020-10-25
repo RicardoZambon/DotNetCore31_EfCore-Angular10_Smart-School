@@ -1,24 +1,33 @@
-<app-titulo [titulo]=titulo></app-titulo>
 
-<div class="card overflow-hidden">
-    <div class="card-body p-0">
-        <table class="table mb-0 table-hover">
-            <thead class="bg-primary text-white">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Sobrenome</th>
-                <th scope="col">Telefone</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let aluno of alunos">
-                    <th scope="row">{{ aluno.id }}</th>
-                    <td>{{ aluno.nome }}</td>
-                    <td>{{ aluno.sobrenome }}</td>
-                    <td>{{ aluno.telefone }}</td>
-                </tr>
-            </tbody>
-        </table>
+<div *ngIf="alunoSelecionado">
+    <app-titulo [titulo]="'Aluno: ' + alunoSelecionado"></app-titulo>
+    <button class="btn btn-secondary" (click)="voltar()">Voltar</button>
+</div>
+<div *ngIf="!alunoSelecionado">
+    <app-titulo [titulo]="titulo"></app-titulo>
+
+    Nenhum aluno selecionado
+    
+    <div class="card overflow-hidden">
+        <div class="card-body p-0">
+            <table class="table mb-0 table-hover">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sobrenome</th>
+                        <th scope="col">Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let aluno of alunos" style="cursor: pointer;" (click)="selecionaAluno(aluno)">
+                        <th scope="row">{{ aluno.id }}</th>
+                        <td>{{ aluno.nome }}</td>
+                        <td>{{ aluno.sobrenome }}</td>
+                        <td>{{ aluno.telefone }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

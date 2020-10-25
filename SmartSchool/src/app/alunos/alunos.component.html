@@ -1,56 +1,69 @@
-
-<div *ngIf="alunoSelecionado">
-    <div class="row">
-        <div class="col mr-auto">
-            <app-titulo [titulo]="'Aluno: ' + alunoSelecionado.id"></app-titulo>
+<div class="row">
+    <div class="col-sm-6" *ngIf="alunoSelecionado">
+        
+        <div class="row">
+            <div class="col mr-auto">
+                <app-titulo [titulo]="'Aluno: ' + alunoSelecionado.id"></app-titulo>
+            </div>
+            <div class="col-auto">
+                <div class="card card-bg my-1">
+                    <div class="card-body p-1">
+                        <button class="btn btn-warning" (click)="voltar()">Lista de alunos</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-auto mt-1">
-            <button class="btn btn-warning" (click)="voltar()">Lista de alunos</button>
+        
+        <div>
+            <div class="card card-bg border">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" value="{{ alunoSelecionado.nome }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="sobrenome" class="form-label">Sobrenome</label>
+                            <input type="text" class="form-control" id="sobrenome" value="{{ alunoSelecionado.sobrenome }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="text" class="form-control" id="telefone" value="{{ alunoSelecionado.telefone }}">
+                        </div>
+                        <div>
+                            <hr />
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-
-    <form>
-        <div class="mb-3">
-            <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" value="{{ alunoSelecionado.nome }}">
-        </div>
-        <div class="mb-3">
-            <label for="sobrenome" class="form-label">Sobrenome</label>
-            <input type="text" class="form-control" id="sobrenome" value="{{ alunoSelecionado.sobrenome }}">
-        </div>
-        <div class="mb-3">
-            <label for="telefone" class="form-label">Telefone</label>
-            <input type="text" class="form-control" id="telefone" value="{{ alunoSelecionado.telefone }}">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
-
-<div *ngIf="!alunoSelecionado">
-    <app-titulo [titulo]="titulo"></app-titulo>
-
-    Nenhum aluno selecionado
     
-    <div class="card overflow-hidden">
-        <div class="card-body p-0">
-            <table class="table mb-0 table-hover">
-                <thead class="bg-primary text-white">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Sobrenome</th>
-                        <th scope="col">Telefone</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let aluno of alunos" style="cursor: pointer;" (click)="selecionaAluno(aluno)">
-                        <th scope="row">{{ aluno.id }}</th>
-                        <td>{{ aluno.nome }}</td>
-                        <td>{{ aluno.sobrenome }}</td>
-                        <td>{{ aluno.telefone }}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="col">
+        <app-titulo [titulo]="titulo"></app-titulo>
+        
+        <div class="card card-bg border">
+            <div class="card-body p-0">
+                <table class="table mb-0 table-hover">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Sobrenome</th>
+                            <th scope="col">Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let aluno of alunos" style="cursor: pointer;" (click)="selecionaAluno(aluno)">
+                            <th scope="row">{{ aluno.id }}</th>
+                            <td>{{ aluno.nome }}</td>
+                            <td>{{ aluno.sobrenome }}</td>
+                            <td>{{ aluno.telefone }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

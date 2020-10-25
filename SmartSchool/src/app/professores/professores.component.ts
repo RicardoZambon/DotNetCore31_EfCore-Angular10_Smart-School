@@ -22,7 +22,7 @@ export class ProfessoresComponent implements OnInit {
   ]
 
   constructor(private fb: FormBuilder) {
-
+    this.criarForm();
   }
 
   ngOnInit(): void {

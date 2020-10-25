@@ -5,12 +5,8 @@
             <div class="col mr-auto">
                 <app-titulo [titulo]="'Aluno: ' + alunoSelecionado.id"></app-titulo>
             </div>
-            <div class="col-auto">
-                <div class="card card-bg my-1">
-                    <div class="card-body p-1">
-                        <button class="btn btn-warning" (click)="voltar()">Lista de alunos</button>
-                    </div>
-                </div>
+            <div class="col-auto mt-2">
+                <button class="btn btn-danger" (click)="voltar()">Fechar</button>
             </div>
         </div>
         
@@ -56,20 +52,33 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let aluno of alunos">
-                            <th scope="row"><button class="btn btn-sm btn-outline-warning" (click)="selecionaAluno(aluno)">detalhe</button></th>
+                            <th><button class="btn btn-sm btn-outline-warning text-dark" (click)="selecionaAluno(aluno)">Detalhe</button></th>
                             <th scope="row">{{ aluno.id }}</th>
                             <td>{{ aluno.nome }}</td>
                             <td>{{ aluno.sobrenome }}</td>
                             <td>{{ aluno.telefone }}</td>
                             <td class="col-auto">
                                 <div class="btn-group">
-                                    <button class="btn btn-sm btn-outline-primary">editar</button>
-                                    <button class="btn btn-sm btn-outline-danger">excluir</button>
+                                    <button data-toggle="modal" data-target="#professoresModal" class="btn btn-sm btn-outline-primary">Professores</button>
+                                    <button class="btn btn-sm btn-outline-danger">Desativar</button>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="professoresModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <app-professores></app-professores>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>

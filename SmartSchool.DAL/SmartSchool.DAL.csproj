@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>SmartSchool.DAL</RootNamespace>
     <AssemblyName>SmartSchool.DAL</AssemblyName>
+	<Version>0.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

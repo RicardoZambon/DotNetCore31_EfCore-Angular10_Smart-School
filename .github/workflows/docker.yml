@@ -15,10 +15,10 @@ jobs:
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Docker build
-        run: docker build -t ricardozambon/Smart-School-WebApi .
+        run: docker build -t ricardozambon/smart-school-webapi .
 
       - name: Push to DockerHub
         run: |
-          docker tag ricardozambon/Smart-School-WebApi:latest ricardozambon/Smart-School-WebApi:${GITHUB_REF:11}
-          docker push ricardozambon/Smart-School-WebApi:${GITHUB_REF:11}
-          docker push ricardozambon/Smart-School-WebApi:latest
+          docker tag ricardozambon/smart-school-webapi:latest ricardozambon/smart-school-webapi:${GITHUB_REF:11}
+          docker push ricardozambon/smart-school-webapi:${GITHUB_REF:11}
+          docker push ricardozambon/smart-school-webapi:latest

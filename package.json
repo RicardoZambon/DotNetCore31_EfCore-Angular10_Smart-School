@@ -6,7 +6,7 @@
     "cz": "git-cz",
 	"zip-angular": "cd SmartSchool.Angular/dist/SmartSchool/ && bestzip ../../../bundle-angular.zip * && cd ../../../",
     "zip-webapi": "cd build/ && bestzip ../bundle-webapi.zip * && cd ..",
-	"publish-angular": "cd SmartSchool.Angular && ng build --prod && cd .. && npm run zip-angular",
+	"publish-angular": "cd SmartSchool.Angular && npm install && ng build --prod && cd .. && npm run zip-angular",
     "publish-webapi": "dotnet publish SmartSchool.sln -c RELEASE -o build /p:DebugType=None && npm run zip-webapi",
 	"publish": "npm run publish-angular && npm run publish-webapi"
   },

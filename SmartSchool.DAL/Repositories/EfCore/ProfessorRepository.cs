@@ -18,7 +18,7 @@ namespace SmartSchool.DAL.Repositories.EfCore
             => await context.AddAsync(professor);
 
         public async Task DeleteAsync(Professor professor)
-            => await Task.Run(() => context.Remove(professor));
+            => await Task.Run(() => context.Remove(professor)).ConfigureAwait(false);
 
         public IQueryable<Professor> GetAllProfessores()
             => context.Set<Professor>().AsQueryable();
@@ -30,6 +30,6 @@ namespace SmartSchool.DAL.Repositories.EfCore
             => (await context.SaveChangesAsync()) > 0;
 
         public async Task UpdateAsync(Professor professor)
-            => await Task.Run(() => context.Update(professor));
+            => await Task.Run(() => context.Update(professor)).ConfigureAwait(false);
     }
 }

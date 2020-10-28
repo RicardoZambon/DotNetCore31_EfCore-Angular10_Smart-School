@@ -61,7 +61,9 @@ namespace SmartSchool.WebApi
                         opt.Condition((sourceObject, destObject, sourceProperty, destProperty) =>
                         {
                             if (sourceProperty == null)
+                            {
                                 return !(destProperty == null);
+                            }
                             return !sourceProperty.Equals(destProperty);
                         });
                     });

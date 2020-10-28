@@ -18,7 +18,7 @@ namespace SmartSchool.DAL.Repositories.EfCore
             => await context.AddAsync(aluno);
 
         public async Task DeleteAsync(Aluno aluno)
-            => await Task.Run(() => context.Remove(aluno));
+            => await Task.Run(() => context.Remove(aluno)).ConfigureAwait(false);
 
         public IQueryable<Aluno> GetAllAlunos()
             => context.Set<Aluno>().AsQueryable();
@@ -30,6 +30,6 @@ namespace SmartSchool.DAL.Repositories.EfCore
             => GetAllAlunos().Where(x => x.Disciplinas.Any(y => y.DisciplinaId == disciplinaId));
 
         public async Task UpdateAsync(Aluno aluno)
-            => await Task.Run(() => context.Update(aluno));
+            => await Task.Run(() => context.Update(aluno)).ConfigureAwait(false);
     }
 }

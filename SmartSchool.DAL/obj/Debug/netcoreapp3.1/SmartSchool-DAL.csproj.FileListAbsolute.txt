@@ -1,0 +1,9 @@
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool-DAL\bin\Debug\netcoreapp3.1\SmartSchool.DAL.deps.json
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool-DAL\bin\Debug\netcoreapp3.1\SmartSchool.DAL.dll
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool-DAL\obj\Debug\netcoreapp3.1\SmartSchool-DAL.csprojAssemblyReference.cache
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool-DAL\obj\Debug\netcoreapp3.1\SmartSchool-DAL.AssemblyInfoInputs.cache
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool-DAL\obj\Debug\netcoreapp3.1\SmartSchool-DAL.AssemblyInfo.cs
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool-DAL\bin\Debug\netcoreapp3.1\SmartSchool.DAL.pdb
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool-DAL\obj\Debug\netcoreapp3.1\SmartSchool-DAL.csproj.CoreCompileInputs.cache
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool-DAL\obj\Debug\netcoreapp3.1\SmartSchool.DAL.dll
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool-DAL\obj\Debug\netcoreapp3.1\SmartSchool.DAL.pdb

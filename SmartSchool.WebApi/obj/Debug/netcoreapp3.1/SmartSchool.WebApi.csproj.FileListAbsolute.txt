@@ -1,0 +1,7 @@
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool.WebApi\obj\Debug\netcoreapp3.1\SmartSchool.WebApi.csprojAssemblyReference.cache
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool.WebApi\obj\Debug\netcoreapp3.1\SmartSchool.WebApi.AssemblyInfoInputs.cache
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool.WebApi\obj\Debug\netcoreapp3.1\SmartSchool.WebApi.AssemblyInfo.cs
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool.WebApi\obj\Debug\netcoreapp3.1\SmartSchool.WebApi.csproj.CoreCompileInputs.cache
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool.WebApi\obj\Debug\netcoreapp3.1\SmartSchool.WebApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool.WebApi\obj\Debug\netcoreapp3.1\SmartSchool.WebApi.dll
+C:\Projects\GitHub\RicardoZambon\DotNetCore31_EfCore-Angular10_Smart-School\SmartSchool.WebApi\obj\Debug\netcoreapp3.1\SmartSchool.WebApi.pdb

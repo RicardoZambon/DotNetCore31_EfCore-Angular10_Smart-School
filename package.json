@@ -1,0 +1,93 @@
+{
+	"name": "smart-school",
+	"version": "0.0.0-development",
+	"scripts": {
+		"semantic-release": "semantic-release",
+		"cz": "git-cz",
+		"zip": "cd build/ && bestzip ../bundle.zip * && cd ..",
+		"publish": "dotnet publish SmartSchool.sln -c RELEASE -o build /p:DebugType=None && npm run zip"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RicardoZambon/DotNetCore31_EfCore-Angular10_Smart-School.git"
+	},
+	"devDependencies": {
+		"@google/semantic-release-replace-plugin": "^1.0.0",
+		"@semantic-release/changelog": "^5.0.1",
+		"@semantic-release/commit-analyzer": "^8.0.1",
+		"@semantic-release/exec": "^5.0.0",
+		"@semantic-release/git": "^9.0.0",
+		"@semantic-release/github": "^7.0.7",
+		"@semantic-release/release-notes-generator": "^9.0.1",
+		"bestzip": "^2.1.5",
+		"cz-conventional-changelog": "^3.2.0",
+		"semantic-release": "^17.1.1"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	},
+	"release": {
+		"plugins": [
+			"@semantic-release/commit-analyzer",
+			"@semantic-release/release-notes-generator",
+			"@semantic-release/changelog",
+			[
+				"@google/semantic-release-replace-plugin",
+				{
+					"replacements": [
+						{
+							"files": [
+								"SmartSchool.WebApi/SmartSchool.WebApi.csproj"
+							],
+							"from": "<Version>.*</Version>",
+							"to": "<Version>${nextRelease.version}</Version>",
+							"results": [
+								{
+									"file": "SmartSchool.WebApi/SmartSchool.WebApi.csproj",
+									"hasChanged": true,
+									"numMatches": 1,
+									"numReplacements": 1
+								}
+							],
+							"countMatches": true
+						}
+					]
+				}
+			],
+			[
+				"@semantic-release/git",
+				{
+					"assets": [
+						"SmartSchool.WebApi/*.csproj"
+					]
+				}
+			],
+			[
+				"@semantic-release/exec",
+				{
+					"publishCmd": "npm run publish"
+				}
+			],
+			[
+				"@semantic-release/github",
+				{
+					"assets": [
+						[
+							"bundle.zip"
+						],
+						{
+							"path": "bundle.zip",
+							"name": "Smart-School-WebApi-${nextRelease.gitTag}.zip",
+							"label": "Smart School WebApi ${nextRelease.gitTag}"
+						}
+					]
+				}
+			]
+		],
+		"branches": [
+			"master"
+		]
+	}
+}

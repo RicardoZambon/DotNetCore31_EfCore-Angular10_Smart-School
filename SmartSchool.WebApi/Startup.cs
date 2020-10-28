@@ -62,7 +62,7 @@ namespace SmartSchool.WebApi
                         {
                             if (sourceProperty == null)
                             {
-                                return !(destProperty == null);
+                                return destProperty != null;
                             }
                             return !sourceProperty.Equals(destProperty);
                         });

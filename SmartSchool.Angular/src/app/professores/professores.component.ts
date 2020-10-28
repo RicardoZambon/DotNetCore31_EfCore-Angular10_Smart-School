@@ -10,7 +10,7 @@ import { Professor } from '../models/Professor';
 export class ProfessoresComponent implements OnInit {
 
   public professorForm: FormGroup;
-  public titulo = "Professores";
+  public titulo = 'Professores';
   public professorSelecionado: Professor;
 
   public professores = [

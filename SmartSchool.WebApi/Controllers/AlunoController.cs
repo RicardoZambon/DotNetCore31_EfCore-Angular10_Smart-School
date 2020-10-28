@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using SmartSchool.WebApi.Models;
 using SmartSchool.WebApi.Services;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SmartSchool.WebApi.Controllers
@@ -48,6 +50,66 @@ namespace SmartSchool.WebApi.Controllers
             try
             {
                 return Ok(alunoService.GetAlunosByDisciplinaId(disciplinaId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro: {ex.Message}");
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Post(AlunoEditModel model)
+        {
+            try
+            {
+                if (await alunoService.AddAlunoAsync(model))
+                {
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro: {ex.Message}");
+            }
+        }
+
+        [HttpPut("{alunoId}")]
+        public async Task<IActionResult> Put(int alunoId, AlunoEditModel model)
+        {
+            try
+            {
+                if (await alunoService.UpdateAlunoAsync(alunoId, model))
+                {
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro: {ex.Message}");
+            }
+        }
+
+        [HttpDelete("{alunoId}")]
+        public async Task<IActionResult> Delete(int alunoId)
+        {
+            try
+            {
+                if (await alunoService.DeleteAlunoAsync(alunoId))
+                {
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
             }
             catch (Exception ex)
             {

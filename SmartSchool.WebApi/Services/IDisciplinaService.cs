@@ -10,6 +10,10 @@ namespace SmartSchool.WebApi.Services
 
         Task<DisciplinaEditModel> GetDisciplinaAsync(int disciplinaId);
 
-        Task SaveDisciplinaAsync(DisciplinaEditModel model);
+        Task<bool> AddDisciplinaAsync(DisciplinaEditModel model);
+
+        Task<bool> UpdateDisciplinaAsync(int disciplinaId, DisciplinaEditModel model);
+
+        Task<bool> DeleteDisciplinaAsync(int disciplinaId);
     }
 }

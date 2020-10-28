@@ -10,6 +10,10 @@ namespace SmartSchool.WebApi.Services
 
         Task<ProfessorEditModel> GetProfessorAsync(int professorId);
 
-        Task SaveProfessorAsync(ProfessorEditModel model);
+        Task<bool> AddProfessorAsync(ProfessorEditModel model);
+
+        Task<bool> UpdateProfessorAsync(int professorId, ProfessorEditModel model);
+
+        Task<bool> DeleteProfessorAsync(int professorId);
     }
 }

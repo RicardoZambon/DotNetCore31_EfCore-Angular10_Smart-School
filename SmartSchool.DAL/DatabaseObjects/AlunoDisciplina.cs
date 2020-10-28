@@ -8,6 +8,6 @@
 
         public int DisciplinaId { get; set; }
 
-        public virtual Disciplina Disciplina { get; set; }
+        public virtual professor Disciplina { get; set; }
     }
 }

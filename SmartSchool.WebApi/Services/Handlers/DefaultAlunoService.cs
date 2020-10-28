@@ -4,6 +4,7 @@ using SmartSchool.DAL;
 using SmartSchool.DAL.DatabaseObjects;
 using SmartSchool.DAL.Repositories;
 using SmartSchool.WebApi.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,22 +33,43 @@ namespace SmartSchool.WebApi.Services.Handlers
         public async Task<AlunoEditModel> GetAlunoAsync(int alunoId)
             => mapper.Map(await alunoRepository.GetAlunoByIdAsync(alunoId), new AlunoEditModel());
 
-        public async Task SaveAlunoAsync(AlunoEditModel model)
+        public async Task<bool> AddAlunoAsync(AlunoEditModel model)
         {
-            var aluno = model.Id > 0 ? (await alunoRepository.GetAlunoByIdAsync(model.Id)) : new Aluno();
+            var aluno = new Aluno();
 
             mapper.Map(model, aluno);
+            await alunoRepository.AddAsync(aluno);
 
-            if (model.Id <= 0)
+            return (await context.SaveChangesAsync()) > 0;
+        }
+
+        public async Task<bool> UpdateAlunoAsync(int alunoId, AlunoEditModel model)
+        {
+            var aluno = (await alunoRepository.GetAlunoByIdAsync(alunoId));
+
+            if (aluno == null)
             {
-                await alunoRepository.AddAsync(aluno);
-            }
-            else
-            {
-                await alunoRepository.UpdateAsync(aluno);
+                throw new KeyNotFoundException();
             }
 
-            await context.SaveChangesAsync();
+            mapper.Map(model, aluno);
+            await alunoRepository.UpdateAsync(aluno);
+
+            return (await context.SaveChangesAsync()) > 0;
+        }
+
+        public async Task<bool> DeleteAlunoAsync(int alunoId)
+        {
+            var aluno = (await alunoRepository.GetAlunoByIdAsync(alunoId));
+
+            if (aluno == null)
+            {
+                throw new KeyNotFoundException();
+            }
+
+            await alunoRepository.DeleteAsync(aluno);
+
+            return (await context.SaveChangesAsync()) > 0;
         }
     }
 }

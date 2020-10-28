@@ -116,6 +116,36 @@ namespace SmartSchool.DAL.Migrations
                     { 5, "Programação", 5 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "AlunoDisciplina",
+                columns: new[] { "AlunoId", "DisciplinaId" },
+                values: new object[,]
+                {
+                    { 2, 1 },
+                    { 4, 5 },
+                    { 2, 5 },
+                    { 1, 5 },
+                    { 7, 4 },
+                    { 6, 4 },
+                    { 5, 4 },
+                    { 4, 4 },
+                    { 1, 4 },
+                    { 7, 3 },
+                    { 5, 5 },
+                    { 6, 3 },
+                    { 7, 2 },
+                    { 6, 2 },
+                    { 3, 2 },
+                    { 2, 2 },
+                    { 1, 2 },
+                    { 7, 1 },
+                    { 6, 1 },
+                    { 4, 1 },
+                    { 3, 1 },
+                    { 3, 3 },
+                    { 7, 5 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AlunoDisciplina_DisciplinaId",
                 table: "AlunoDisciplina",

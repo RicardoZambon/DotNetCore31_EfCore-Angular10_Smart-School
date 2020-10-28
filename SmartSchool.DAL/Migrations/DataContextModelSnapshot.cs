@@ -106,6 +106,123 @@ namespace SmartSchool.DAL.Migrations
                     b.HasIndex("DisciplinaId");
 
                     b.ToTable("AlunoDisciplina");
+
+                    b.HasData(
+                        new
+                        {
+                            AlunoId = 1,
+                            DisciplinaId = 2
+                        },
+                        new
+                        {
+                            AlunoId = 1,
+                            DisciplinaId = 4
+                        },
+                        new
+                        {
+                            AlunoId = 1,
+                            DisciplinaId = 5
+                        },
+                        new
+                        {
+                            AlunoId = 2,
+                            DisciplinaId = 1
+                        },
+                        new
+                        {
+                            AlunoId = 2,
+                            DisciplinaId = 2
+                        },
+                        new
+                        {
+                            AlunoId = 2,
+                            DisciplinaId = 5
+                        },
+                        new
+                        {
+                            AlunoId = 3,
+                            DisciplinaId = 1
+                        },
+                        new
+                        {
+                            AlunoId = 3,
+                            DisciplinaId = 2
+                        },
+                        new
+                        {
+                            AlunoId = 3,
+                            DisciplinaId = 3
+                        },
+                        new
+                        {
+                            AlunoId = 4,
+                            DisciplinaId = 1
+                        },
+                        new
+                        {
+                            AlunoId = 4,
+                            DisciplinaId = 4
+                        },
+                        new
+                        {
+                            AlunoId = 4,
+                            DisciplinaId = 5
+                        },
+                        new
+                        {
+                            AlunoId = 5,
+                            DisciplinaId = 4
+                        },
+                        new
+                        {
+                            AlunoId = 5,
+                            DisciplinaId = 5
+                        },
+                        new
+                        {
+                            AlunoId = 6,
+                            DisciplinaId = 1
+                        },
+                        new
+                        {
+                            AlunoId = 6,
+                            DisciplinaId = 2
+                        },
+                        new
+                        {
+                            AlunoId = 6,
+                            DisciplinaId = 3
+                        },
+                        new
+                        {
+                            AlunoId = 6,
+                            DisciplinaId = 4
+                        },
+                        new
+                        {
+                            AlunoId = 7,
+                            DisciplinaId = 1
+                        },
+                        new
+                        {
+                            AlunoId = 7,
+                            DisciplinaId = 2
+                        },
+                        new
+                        {
+                            AlunoId = 7,
+                            DisciplinaId = 3
+                        },
+                        new
+                        {
+                            AlunoId = 7,
+                            DisciplinaId = 4
+                        },
+                        new
+                        {
+                            AlunoId = 7,
+                            DisciplinaId = 5
+                        });
                 });
 
             modelBuilder.Entity("SmartSchool.DAL.DatabaseObjects.Disciplina", b =>
@@ -207,7 +324,7 @@ namespace SmartSchool.DAL.Migrations
             modelBuilder.Entity("SmartSchool.DAL.DatabaseObjects.AlunoDisciplina", b =>
                 {
                     b.HasOne("SmartSchool.DAL.DatabaseObjects.Aluno", "Aluno")
-                        .WithMany()
+                        .WithMany("Disciplinas")
                         .HasForeignKey("AlunoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -222,7 +339,7 @@ namespace SmartSchool.DAL.Migrations
             modelBuilder.Entity("SmartSchool.DAL.DatabaseObjects.Disciplina", b =>
                 {
                     b.HasOne("SmartSchool.DAL.DatabaseObjects.Professor", "Professor")
-                        .WithMany()
+                        .WithMany("Disciplinas")
                         .HasForeignKey("ProfessorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

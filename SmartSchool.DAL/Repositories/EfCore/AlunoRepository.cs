@@ -29,9 +29,6 @@ namespace SmartSchool.DAL.Repositories.EfCore
         public IQueryable<Aluno> GetAlunosByDisciplinaId(int disciplinaId)
             => GetAllAlunos().Where(x => x.Disciplinas.Any(y => y.DisciplinaId == disciplinaId));
 
-        public async Task<bool> SaveChangesAsync()
-            => (await context.SaveChangesAsync()) > 0;
-
         public async Task UpdateAsync(Aluno aluno)
             => await Task.Run(() => context.Update(aluno));
     }

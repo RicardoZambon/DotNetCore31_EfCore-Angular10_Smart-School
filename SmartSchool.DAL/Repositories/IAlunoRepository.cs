@@ -18,8 +18,5 @@ namespace SmartSchool.DAL.Repositories
         Task UpdateAsync(Aluno aluno);
 
         Task DeleteAsync(Aluno aluno);
-
-
-        Task<bool> SaveChangesAsync();
     }
 }

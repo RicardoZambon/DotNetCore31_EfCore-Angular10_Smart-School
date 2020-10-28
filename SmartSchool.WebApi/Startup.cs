@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SmartSchool.DAL;
+using SmartSchool.DAL.Repositories;
+using SmartSchool.DAL.Repositories.EfCore;
 
 namespace SmartSchool.WebApi
 {
@@ -30,6 +32,10 @@ namespace SmartSchool.WebApi
                         b.MigrationsAssembly(typeof(DataContext).Assembly.GetName().Name)
                 );
             });
+
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
+            services.AddScoped<IDisciplinaRepository, DisciplinaRepository>();
+            services.AddScoped<IProfessorRepository, ProfessorRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SmartSchool.DAL.DatabaseObjects
 {
@@ -15,5 +16,7 @@ namespace SmartSchool.DAL.DatabaseObjects
 
         [StringLength(50)]
         public string Telefone { get; set; }
+
+        public virtual ICollection<AlunoDisciplina> Disciplinas { get; set; }
     }
 }

@@ -17,10 +17,6 @@ namespace SmartSchool.WebApi.Controllers
             {
                 return BadRequest($"Erro: {ex.Message}");
             }
-            
-            if (1 == 1 ){
-                //abcasasa
-            }
         }
     }
 }

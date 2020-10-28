@@ -9,11 +9,11 @@ namespace SmartSchool.DAL.DatabaseObjects.EfCore
         {
             builder.HasData(new[]
             {
-                new Professor() { Id = 1, Nome = "Lauro" },
-                new Professor() { Id = 2, Nome = "Roberto" },
-                new Professor() { Id = 3, Nome = "Ronaldo" },
-                new Professor() { Id = 4, Nome = "Rodrigo" },
-                new Professor() { Id = 5, Nome = "Alexandre" },
+                new Professor { Id = 1, Nome = "Lauro" },
+                new Professor { Id = 2, Nome = "Roberto" },
+                new Professor { Id = 3, Nome = "Ronaldo" },
+                new Professor { Id = 4, Nome = "Rodrigo" },
+                new Professor { Id = 5, Nome = "Alexandre" },
             });
         }
     }

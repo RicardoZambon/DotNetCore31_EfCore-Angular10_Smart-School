@@ -27,7 +27,7 @@ namespace SmartSchool.DAL.Repositories.EfCore
             => await context.FindAsync<Professor>(professorId);
 
         public async Task<bool> SaveChangesAsync()
-            => await context.SaveChangesAsync() > 0;
+            => (await context.SaveChangesAsync()) > 0;
 
         public async Task UpdateAsync(Professor professor)
             => await Task.Run(() => context.Update(professor));

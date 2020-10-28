@@ -1,3 +1,5 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/ricardozambon/DotNetCore31_EfCore-Angular10_Smart-School?logo=github&logoColor=white) ![Release](https://github.com/RicardoZambon/DotNetCore31_EfCore-Angular10_Smart-School/workflows/Semantic-Release/badge.svg) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ricardozambon/DotNetCore31_EfCore-Angular10_Smart-School?logo=github&logoColor=white) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/24ccafac34f446e1b64bd8db9d0d91ca)](https://app.codacy.com/gh/RicardoZambon/DotNetCore31_EfCore-Angular10_Smart-School?utm_source=github.com&utm_medium=referral&utm_content=RicardoZambon/DotNetCore31_EfCore-Angular10_Smart-School&utm_campaign=Badge_Grade)
+
 # Smart School

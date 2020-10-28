@@ -4,8 +4,11 @@
   "scripts": {
     "semantic-release": "semantic-release",
     "cz": "git-cz",
-    "zip": "cd build/ && bestzip ../bundle.zip * && cd ..",
-    "publish": "dotnet publish SmartSchool.sln -c RELEASE -o build /p:DebugType=None && npm run zip"
+	"zip-angular": "cd SmartSchool.Angular/dist/SmartSchool/ && bestzip ../../../bundle-angular.zip * && cd ../../../",
+    "zip-webapi": "cd build/ && bestzip ../bundle-webapi.zip * && cd ..",
+	"publish-angular": "cd SmartSchool.Angular && ng build --prod && cd .. && npm run zip-angular",
+    "publish-webapi": "dotnet publish SmartSchool.sln -c RELEASE -o build /p:DebugType=None && npm run zip-webapi",
+	"publish": "npm run publish-angular && npm run publish-webapi"
   },
   "repository": {
     "type": "git",
@@ -52,6 +55,22 @@
                 }
               ],
               "countMatches": true
+            },
+			{
+              "files": [
+                "SmartSchool.Angular/package.json"
+              ],
+              "from": "\"version\": \".*\",",
+              "to": "\"version\": \"${nextRelease.version}\",",
+              "results": [
+                {
+                  "file": "SmartSchool.Angular/package.json",
+                  "hasChanged": true,
+                  "numMatches": 1,
+                  "numReplacements": 1
+                }
+              ],
+              "countMatches": true
             }
           ]
         }
@@ -60,7 +79,8 @@
         "@semantic-release/git",
         {
           "assets": [
-            "SmartSchool.WebApi/*.csproj"
+            "SmartSchool.WebApi/*.csproj",
+			"SmartSchool.Angular/*.json"
           ]
         }
       ],
@@ -75,12 +95,18 @@
         {
           "assets": [
             [
-              "bundle.zip"
+              "bundle-webapi.zip",
+			  "bundle-angular.zip"
             ],
             {
-              "path": "bundle.zip",
+              "path": "bundle-webapi.zip",
               "name": "Smart-School-WebApi-${nextRelease.gitTag}.zip",
               "label": "Smart School WebApi ${nextRelease.gitTag}"
+            },
+			{
+              "path": "bundle-angular.zip",
+              "name": "Smart-School-${nextRelease.gitTag}.zip",
+              "label": "Smart School ${nextRelease.gitTag}"
             }
           ]
         }

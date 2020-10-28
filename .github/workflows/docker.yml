@@ -16,7 +16,6 @@ jobs:
 
       - name: Docker build WebApi
         run: docker build -t ricardozambon/smart-school-webapi .
-        working-directory: ./SmartSchool.WebApi
         
       - name: Docker build Angular
         run: docker build -t ricardozambon/smart-school-angular .

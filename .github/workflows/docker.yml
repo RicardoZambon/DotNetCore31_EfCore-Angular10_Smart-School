@@ -1,0 +1,24 @@
+name: Docker-Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Docker login
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Docker build
+        run: docker build -t ricardozambon/Smart-School-WebApi .
+
+      - name: Push to DockerHub
+        run: |
+          docker tag ricardozambon/Smart-School-WebApi:latest ricardozambon/Smart-School-WebApi:${GITHUB_REF:11}
+          docker push ricardozambon/Smart-School-WebApi:${GITHUB_REF:11}
+          docker push ricardozambon/Smart-School-WebApi:latest

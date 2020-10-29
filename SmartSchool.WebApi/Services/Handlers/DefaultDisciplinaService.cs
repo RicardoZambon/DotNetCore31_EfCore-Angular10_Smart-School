@@ -30,17 +30,18 @@ namespace SmartSchool.WebApi.Services.Handlers
         public async Task<DisciplinaEditModel> GetDisciplinaAsync(int disciplinaId)
             => mapper.Map(await disciplinaRepository.GetDisciplinaByIdAsync(disciplinaId), new DisciplinaEditModel());
 
-        public async Task<bool> AddDisciplinaAsync(DisciplinaEditModel model)
+        public async Task<DisciplinaEditModelReturn> AddDisciplinaAsync(DisciplinaEditModel model)
         {
             var disciplina = new Disciplina();
 
             mapper.Map(model, disciplina);
             await disciplinaRepository.AddAsync(disciplina);
 
-            return (await context.SaveChangesAsync()) > 0;
+            await context.SaveChangesAsync();
+            return mapper.Map(disciplina, new DisciplinaEditModelReturn());
         }
 
-        public async Task<bool> UpdateDisciplinaAsync(int disciplinaId, DisciplinaEditModel model)
+        public async Task<DisciplinaEditModelReturn> UpdateDisciplinaAsync(int disciplinaId, DisciplinaEditModel model)
         {
             var disciplina = (await disciplinaRepository.GetDisciplinaByIdAsync(disciplinaId));
 
@@ -52,7 +53,8 @@ namespace SmartSchool.WebApi.Services.Handlers
             mapper.Map(model, disciplina);
             await disciplinaRepository.UpdateAsync(disciplina);
 
-            return (await context.SaveChangesAsync()) > 0;
+            await context.SaveChangesAsync();
+            return mapper.Map(disciplina, new DisciplinaEditModelReturn());
         }
 
         public async Task<bool> DeleteDisciplinaAsync(int disciplinaId)

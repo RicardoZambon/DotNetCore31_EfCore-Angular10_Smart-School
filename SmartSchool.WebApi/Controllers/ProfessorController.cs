@@ -50,9 +50,9 @@ namespace SmartSchool.WebApi.Controllers
         {
             try
             {
-                if (await professorService.AddProfessorAsync(model))
+                if ((await professorService.AddProfessorAsync(model)) is ProfessorEditModelReturn professorReturnModel)
                 {
-                    return Ok();
+                    return Ok(professorReturnModel);
                 }
                 return BadRequest();
             }
@@ -67,9 +67,9 @@ namespace SmartSchool.WebApi.Controllers
         {
             try
             {
-                if (await professorService.UpdateProfessorAsync(professorId, model))
+                if ((await professorService.UpdateProfessorAsync(professorId, model)) is ProfessorEditModelReturn professorModelReturn)
                 {
-                    return Ok();
+                    return Ok(professorModelReturn);
                 }
                 return BadRequest();
             }

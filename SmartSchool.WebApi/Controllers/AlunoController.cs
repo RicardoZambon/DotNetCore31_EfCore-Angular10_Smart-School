@@ -63,9 +63,9 @@ namespace SmartSchool.WebApi.Controllers
         {
             try
             {
-                if (await alunoService.AddAlunoAsync(model))
+                if ((await alunoService.AddAlunoAsync(model)) is AlunoEditModelReturn alunoReturnModel)
                 {
-                    return Ok();
+                    return Ok(alunoReturnModel);
                 }
                 return BadRequest();
             }
@@ -80,9 +80,9 @@ namespace SmartSchool.WebApi.Controllers
         {
             try
             {
-                if (await alunoService.UpdateAlunoAsync(alunoId, model))
+                if ((await alunoService.UpdateAlunoAsync(alunoId, model)) is AlunoEditModelReturn alunoReturnModel)
                 {
-                    return Ok();
+                    return Ok(alunoReturnModel);
                 }
                 return BadRequest();
             }

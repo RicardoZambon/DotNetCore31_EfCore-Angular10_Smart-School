@@ -33,17 +33,18 @@ namespace SmartSchool.WebApi.Services.Handlers
         public async Task<AlunoEditModel> GetAlunoAsync(int alunoId)
             => mapper.Map(await alunoRepository.GetAlunoByIdAsync(alunoId), new AlunoEditModel());
 
-        public async Task<bool> AddAlunoAsync(AlunoEditModel model)
+        public async Task<AlunoEditModelReturn> AddAlunoAsync(AlunoEditModel model)
         {
             var aluno = new Aluno();
 
             mapper.Map(model, aluno);
             await alunoRepository.AddAsync(aluno);
 
-            return (await context.SaveChangesAsync()) > 0;
+            await context.SaveChangesAsync();
+            return mapper.Map(aluno, new AlunoEditModelReturn());
         }
 
-        public async Task<bool> UpdateAlunoAsync(int alunoId, AlunoEditModel model)
+        public async Task<AlunoEditModelReturn> UpdateAlunoAsync(int alunoId, AlunoEditModel model)
         {
             var aluno = (await alunoRepository.GetAlunoByIdAsync(alunoId));
 
@@ -55,7 +56,8 @@ namespace SmartSchool.WebApi.Services.Handlers
             mapper.Map(model, aluno);
             await alunoRepository.UpdateAsync(aluno);
 
-            return (await context.SaveChangesAsync()) > 0;
+            await context.SaveChangesAsync();
+            return mapper.Map(aluno, new AlunoEditModelReturn());
         }
 
         public async Task<bool> DeleteAlunoAsync(int alunoId)

@@ -12,9 +12,9 @@ namespace SmartSchool.WebApi.Services
 
         Task<AlunoEditModel> GetAlunoAsync(int alunoId);
 
-        Task<bool> AddAlunoAsync(AlunoEditModel model);
+        Task<AlunoEditModelReturn> AddAlunoAsync(AlunoEditModel model);
 
-        Task<bool> UpdateAlunoAsync(int alunoId, AlunoEditModel model);
+        Task<AlunoEditModelReturn> UpdateAlunoAsync(int alunoId, AlunoEditModel model);
 
         Task<bool> DeleteAlunoAsync(int alunoId);
     }

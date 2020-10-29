@@ -26,9 +26,6 @@ namespace SmartSchool.DAL.Repositories.EfCore
         public async Task<Disciplina> GetDisciplinaByIdAsync(int disciplinaId)
             => await context.FindAsync<Disciplina>(disciplinaId);
 
-        public async Task<bool> SaveChangesAsync()
-            => (await context.SaveChangesAsync()) > 0;
-
         public async Task UpdateAsync(Disciplina disciplina)
             => await Task.Run(() => context.Update(disciplina)).ConfigureAwait(false);
     }

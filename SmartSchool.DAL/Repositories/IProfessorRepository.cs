@@ -16,8 +16,5 @@ namespace SmartSchool.DAL.Repositories
         Task UpdateAsync(Professor professor);
 
         Task DeleteAsync(Professor professor);
-
-
-        Task<bool> SaveChangesAsync();
     }
 }

@@ -11,6 +11,6 @@ namespace SmartSchool.DAL.DatabaseObjects
         [StringLength(200)]
         public string Nome { get; set; }
 
-        public virtual ICollection<professor> Disciplinas { get; set; }
+        public virtual ICollection<Disciplina> Disciplinas { get; set; }
     }
 }

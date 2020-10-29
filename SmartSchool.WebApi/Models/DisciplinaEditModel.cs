@@ -3,7 +3,7 @@ using SmartSchool.DAL.DatabaseObjects;
 
 namespace SmartSchool.WebApi.Models
 {
-    [AutoMap(typeof(professor), ReverseMap = false)]
+    [AutoMap(typeof(Disciplina), ReverseMap = false)]
     public class DisciplinaEditModel
     {
         public int Id { get; set; }

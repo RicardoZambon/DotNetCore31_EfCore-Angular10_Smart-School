@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Professor } from '../models/Professor';
+import { ProfessorService } from './professor.service';
 
 @Component({
   selector: 'app-professores',
@@ -13,30 +14,55 @@ export class ProfessoresComponent implements OnInit {
   public titulo = 'Professores';
   public professorSelecionado: Professor;
 
-  public professores = [
-    { id: 1, nome: 'Lauro', disciplina: 'Matemática' },
-    { id: 2, nome: 'Roberto', disciplina: 'Física' },
-    { id: 3, nome: 'Ronaldo', disciplina: 'Português' },
-    { id: 4, nome: 'Rodrigo', disciplina: 'Inglês' },
-    { id: 5, nome: 'Alexandre', disciplina: 'Programação' }
-  ]
+  public professores: Professor[];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private professorService: ProfessorService) {
     this.criarForm();
   }
 
   ngOnInit(): void {
+    this.carregarProfessores();
   }
+
+  carregarProfessores(): void {
+    this.professorService.getAll().subscribe(
+      (professores) => { this.professores = professores; },
+      (error: any) => { console.error(error); }
+    );
+  }
+
+  salvarProfessor(professorModel: Professor): void {
+    if (professorModel.id > 0) {
+      this.professorService.put(professorModel.id, professorModel).subscribe(
+        () => {
+          this.carregarProfessores();
+          this.professorSelecionado = null;
+        },
+        (error: any) => { console.error(error); }
+      );
+    }
+    else {
+      this.professorService.post(professorModel).subscribe(
+        () => {
+          this.carregarProfessores();
+          this.professorSelecionado = null;
+        },
+        (error: any) => { console.error(error); }
+      );
+    }
+  }
+
 
   criarForm(): void {
     this.professorForm = this.fb.group({
-      nome: ['', Validators.required],
-      disciplina: ['', Validators.required]
+      id: [''],
+      nome: ['', Validators.required]//,
+      //disciplina: ['', Validators.required]
     });
   }
 
   professorSubmit() {
-    console.log(this.professorForm.value);
+    this.salvarProfessor(this.professorForm.value);
   }
 
   selecionaProfessor(professor: Professor): void {

@@ -28,6 +28,8 @@ namespace SmartSchool.WebApi
         {
             services.AddControllers();
 
+            services.AddCors();
+
             //EFCore
             services.AddDbContextPool<DataContext>((optionsBuilder) =>
             {
@@ -82,6 +84,8 @@ namespace SmartSchool.WebApi
             //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

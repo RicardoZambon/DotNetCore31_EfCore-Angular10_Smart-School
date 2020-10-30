@@ -21,7 +21,7 @@ export class AlunosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.carregarAlunos()
+    this.carregarAlunos();
   }
 
   carregarAlunos(): void {

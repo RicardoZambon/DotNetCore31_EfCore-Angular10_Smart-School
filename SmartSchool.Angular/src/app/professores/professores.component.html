@@ -28,33 +28,26 @@
 
     <div class="col">
         <app-titulo [titulo]=titulo>
-            <button class="btn btn-success" (click)="novoProfessor()">Cadastrar professor</button>
+            <button class="btn btn-success" (click)="novoProfessor()">Novo professor</button>
         </app-titulo>
 
         <div class="card overflow-hidden">
             <div class="card-body p-0">
-                <table class="table mb-0 table-hover">
+                <table class="table table-striped table-hover table-md mb-0 table-clickable-rows">
                     <thead class="bg-primary text-white">
                     <tr>
-                        <th scope="col">Visualizar</th>
-                        <th scope="col">#</th>
+                        <th scope="col" class="col-fit text-center"><i class="fas fa-cogs"></i></th>
                         <th scope="col">Nome</th>
                         <th scope="col">Disciplina</th>
-                        <th scope="col">Opções</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let professor of professores">
-                            <th><button class="btn btn-sm btn-outline-warning text-dark" (click)="selecionaProfessor(professor)">Detalhe</button></th>
-                            <th scope="row">{{ professor.id }}</th>
-                            <td>{{ professor.nome }}</td>
-                            <td>{{ professor.disciplina }}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button data-toggle="modal" data-target="#alunosModal" class="btn btn-sm btn-outline-primary">Alunos</button>
-                                    <button class="btn btn-sm btn-outline-danger" (click)="deletarProfessor(professor.id)">Deletar</button>
-                                </div>
-                            </td>
+                            <th class="col-fit text-nowrap">
+                                <button class="btn btn-sm btn-outline-danger" (click)="deletarProfessor(professor.id)"><i class="fas fa-trash-alt"></i></button>
+                            </th>
+                            <td class="col-6 align-middle" (click)="selecionaProfessor(professor)">{{ professor.nome }}</td>
+                            <td class="col-6 align-middle" (click)="selecionaProfessor(professor)">{{ professor.disciplina }}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -31,35 +31,28 @@
     
     <div class="col">
         <app-titulo [titulo]="titulo">
-            <button class="btn btn-success" (click)="novoAluno()">Cadastrar aluno</button>
+            <button class="btn btn-success" (click)="novoAluno()">Novo aluno</button>
         </app-titulo>
         
-        <div class="card card-bg border">
+        <div class="card overflow-hidden">
             <div class="card-body p-0">
-                <table class="table mb-0 table-hover">
+                <table class="table table-striped table-hover table-md mb-0 table-clickable-rows">
                     <thead class="bg-primary text-white">
                         <tr>
-                            <th scope="col">Visualizar</th>
-                            <th scope="col">#</th>
+                            <th scope="col" class="col-fit text-center"><i class="fas fa-cogs"></i></th>
                             <th scope="col">Nome</th>
                             <th scope="col">Sobrenome</th>
                             <th scope="col">Telefone</th>
-                            <th scope="col">Opções</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let aluno of alunos">
-                            <th><button class="btn btn-sm btn-outline-warning text-dark" (click)="selecionaAluno(aluno)">Detalhe</button></th>
-                            <th scope="row">{{ aluno.id }}</th>
-                            <td>{{ aluno.nome }}</td>
-                            <td>{{ aluno.sobrenome }}</td>
-                            <td>{{ aluno.telefone }}</td>
-                            <td class="col-auto">
-                                <div class="btn-group">
-                                    <button data-toggle="modal" data-target="#professoresModal" class="btn btn-sm btn-outline-primary">Professores</button>
-                                    <button class="btn btn-sm btn-outline-danger" (click)="deletarAluno(aluno.id)">Deletar</button>
-                                </div>
-                            </td>
+                            <th class="col-fit text-nowrap">
+                                <button class="btn btn-sm btn-outline-danger" (click)="deletarAluno(aluno.id)"><i class="fas fa-trash-alt"></i></button>
+                            </th>
+                            <td class="col-4 align-middle" (click)="selecionaAluno(aluno)">{{ aluno.nome }}</td>
+                            <td class="col-4 align-middle" (click)="selecionaAluno(aluno)">{{ aluno.sobrenome }}</td>
+                            <td class="col-3 align-middle" (click)="selecionaAluno(aluno)">{{ aluno.telefone }}</td>
                         </tr>
                     </tbody>
                 </table>

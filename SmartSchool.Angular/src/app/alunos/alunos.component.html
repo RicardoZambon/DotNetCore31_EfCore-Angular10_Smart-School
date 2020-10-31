@@ -1,9 +1,9 @@
 <div class="row">
-    <div class="col-sm-6" *ngIf="alunoSelecionado">
-        
-        <app-titulo [titulo]="(alunoSelecionado.id == 0 ? 'Novo aluno' : 'Aluno: ' + alunoSelecionado.id)">
+    <div class="col-sm-6" *ngIf="alunoSelecionadoId">
+        <app-titulo [titulo]="(alunoSelecionadoId === -1 ? 'Novo aluno' : 'Editar aluno')">
             <button class="btn btn-danger" (click)="voltar()">Fechar</button>
         </app-titulo>
+        
         <div class="card card-bg border">
             <div class="card-body">
                 <form [formGroup]="alunoForm" (submit)="alunoSubmit()">
@@ -50,9 +50,9 @@
                             <th class="text-nowrap">
                                 <button class="btn btn-sm btn-outline-danger" (click)="deletarAluno(aluno.id)"><i class="fas fa-trash-alt"></i></button>
                             </th>
-                            <td class="align-middle" (click)="selecionaAluno(aluno)">{{ aluno.nome }}</td>
-                            <td class="align-middle" (click)="selecionaAluno(aluno)">{{ aluno.sobrenome }}</td>
-                            <td class="align-middle" (click)="selecionaAluno(aluno)">{{ aluno.telefone }}</td>
+                            <td class="align-middle" (click)="selecionaAluno(aluno.id)">{{ aluno.nome }}</td>
+                            <td class="align-middle" (click)="selecionaAluno(aluno.id)">{{ aluno.sobrenome }}</td>
+                            <td class="align-middle" (click)="selecionaAluno(aluno.id)">{{ aluno.telefone }}</td>
                         </tr>
                     </tbody>
                 </table>

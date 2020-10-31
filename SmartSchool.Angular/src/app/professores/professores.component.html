@@ -1,10 +1,9 @@
 <div class="row">
-    <div class="col-sm-6" *ngIf="professorSelecionado">
-        
-        <app-titulo [titulo]="(professorSelecionado.id == 0 ? 'Novo professor' : 'Professor: ' + professorSelecionado.id)">
+    <div class="col-sm-6" *ngIf="professorSelecionadoId">
+        <app-titulo [titulo]="(professorSelecionadoId === -1 ? 'Novo professor' : 'Editar professor')">
             <button class="btn btn-danger" (click)="voltar()">Voltar</button>
         </app-titulo>
-
+        
         <div class="card card-bg border">
             <div class="card-body">
                 <form [formGroup]="professorForm" (submit)="professorSubmit()">
@@ -46,8 +45,8 @@
                             <th class="col-fit text-nowrap">
                                 <button class="btn btn-sm btn-outline-danger" (click)="deletarProfessor(professor.id)"><i class="fas fa-trash-alt"></i></button>
                             </th>
-                            <td class="col-6 align-middle" (click)="selecionaProfessor(professor)">{{ professor.nome }}</td>
-                            <td class="col-6 align-middle" (click)="selecionaProfessor(professor)">{{ professor.disciplina }}</td>
+                            <td class="col-6 align-middle" (click)="selecionaProfessor(professor.id)">{{ professor.nome }}</td>
+                            <td class="col-6 align-middle" (click)="selecionaProfessor(professor.id)">{{ professor.disciplina }}</td>
                         </tr>
                     </tbody>
                 </table>

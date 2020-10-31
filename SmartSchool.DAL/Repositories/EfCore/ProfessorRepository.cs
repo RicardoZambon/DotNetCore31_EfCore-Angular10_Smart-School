@@ -21,7 +21,7 @@ namespace SmartSchool.DAL.Repositories.EfCore
             => await Task.Run(async () =>
             {
                 professor.IsDeleted = true;
-                await UpdateAsync(professor);
+                await UpdateAsync(professor).ConfigureAwait(false);
             }).ConfigureAwait(false);
 
         public IQueryable<Professor> GetAllProfessores()

@@ -84,6 +84,10 @@ table.table td, table.table th {
     position: relative;
 }
 
+table.table-md td, table.table-md td .text-truncate, table.table-md th {
+    padding: 0.5rem;
+}
+
 table.table thead th {
     border-top: none;
 }
@@ -105,10 +109,6 @@ table td.col-fit.text-truncate {
 
 table.table-sm td .text-truncate {
     padding: 0.3rem;
-}
-
-table.table-md td, table.table-md td .text-truncate, table.table-md th {
-    padding: 0.5rem;
 }
 
 .table-scrollable {
@@ -163,8 +163,4 @@ table.table-md td, table.table-md td .text-truncate, table.table-md th {
 
 .table-striped tr.table-info:nth-of-type(even) > th, .table-striped tr.table-info:nth-of-type(even) > td {
     background-color: rgb(231, 245, 248);
-}
-
-.card.borderless > .card-body > .card {
-    border: 0 !important;
 }

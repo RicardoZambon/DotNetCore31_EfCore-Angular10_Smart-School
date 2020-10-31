@@ -11,10 +11,6 @@
                         <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" formControlName="nome">
                     </div>
-                    <!-- <div class="mb-3">
-                        <label for="disciplina" class="form-label">Disciplina</label>
-                        <input type="text" class="form-control" formControlName="disciplina">
-                    </div> -->
                     <div>
                         <hr />
                         <button type="submit" class="btn btn-primary" [disabled]="!professorForm.valid">Salvar</button>
@@ -37,7 +33,6 @@
                     <tr>
                         <th scope="col" class="col-fit text-center"><i class="fas fa-cogs"></i></th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Disciplina</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,7 +41,6 @@
                                 <button class="btn btn-sm btn-outline-danger" (click)="deletarProfessor(professor.id)"><i class="fas fa-trash-alt"></i></button>
                             </th>
                             <td class="col-6 align-middle" (click)="selecionaProfessor(professor.id)">{{ professor.nome }}</td>
-                            <td class="col-6 align-middle" (click)="selecionaProfessor(professor.id)">{{ professor.disciplina }}</td>
                         </tr>
                     </tbody>
                 </table>

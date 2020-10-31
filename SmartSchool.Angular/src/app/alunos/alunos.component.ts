@@ -49,9 +49,7 @@ export class AlunosComponent implements OnInit {
   selecionaAluno(alunoId: number): void {
     this.alunoService.getById(alunoId)
       .subscribe(
-        (aluno) => {
-          this.mostrarForm(alunoId, aluno);
-        },
+        (aluno) => { this.mostrarForm(alunoId, aluno); },
         (error: any) => { console.error(error); }
       );
   }

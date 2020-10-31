@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-sm-6" *ngIf="disciplinaSelecionadaId">
+      <app-titulo [titulo]="(disciplinaSelecionadaId === -1 ? 'Nova disciplina' : 'Editar disciplina')">
+          <button class="btn btn-danger" (click)="voltar()">Fechar</button>
+      </app-titulo>
+      
+      <div class="card card-bg border">
+          <div class="card-body">
+              <form [formGroup]="disciplinaForm" (submit)="disciplinaSubmit()">
+                  <div class="mb-3">
+                      <label for="nome" class="form-label">Nome</label>
+                      <input type="text" class="form-control" formControlName="nome">
+                  </div>
+                  <div class="mb-3">
+                    <label for="nome" class="form-label">Professor</label>
+                    <select class="form-control" formControlName="professorId">
+                      <option value="0" disabled>Selecione o professor</option>
+                      <option *ngFor="let professor of professoresList" [ngValue]="professor.id">{{professor.nome}}</option>
+                   </select>
+                </div>
+                  <div>
+                      <hr />
+                      <button type="submit" class="btn btn-success" [disabled]="!disciplinaForm.valid">Salvar</button>
+                  </div>
+                  <input type="hidden" formControlName="id">
+              </form>
+          </div>
+      </div>
+  </div>
+  
+  <div class="col">
+      <app-titulo [titulo]="titulo">
+          <button class="btn btn-success" (click)="novaDisciplina()">Nova disciplina</button>
+      </app-titulo>
+      
+      <div class="card overflow-hidden">
+          <div class="card-body p-0">
+              <table class="table table-striped table-hover table-md mb-0 table-clickable-rows">
+                  <thead class="bg-primary text-white">
+                      <tr>
+                          <th scope="col" class="col-fit text-center"><i class="fas fa-cogs"></i></th>
+                          <th scope="col" class="col-4">Nome</th>
+                          <th scope="col" class="col-4">Professor</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let disciplina of disciplinas">
+                          <th class="text-nowrap">
+                              <button class="btn btn-sm btn-outline-danger" (click)="deletarDisciplina(disciplina.id)"><i class="fas fa-trash-alt"></i></button>
+                          </th>
+                          <td class="align-middle" (click)="selecionaDisciplina(disciplina.id)">{{ disciplina.nome }}</td>
+                          <td class="align-middle" (click)="selecionaDisciplina(disciplina.id)">{{ disciplina.professor }}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="professoresModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body">
+              <app-professores></app-professores>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+      </div>
+  </div>
+</div>

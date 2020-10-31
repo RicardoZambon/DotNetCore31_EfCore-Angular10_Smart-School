@@ -11,16 +11,18 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './nav/nav.component';
 import { TituloComponent } from './titulo/titulo.component';
+import { DisciplinasComponent } from './disciplinas/disciplinas.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     AlunosComponent,
       ProfessoresComponent,
       PerfilComponent,
       DashboardComponent,
       NavComponent,
-      TituloComponent
+      TituloComponent,
+      DisciplinasComponent
    ],
   imports: [
     BrowserModule,

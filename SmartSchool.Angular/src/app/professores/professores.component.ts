@@ -26,9 +26,8 @@ export class ProfessoresComponent implements OnInit {
   
   criarForm(): void {
     this.professorForm = this.fb.group({
-      id: [0],
-      nome: ['', Validators.required]//,
-      //disciplina: ['', Validators.required]
+      nome: ['', Validators.required],
+      disciplina: [0, Validators.required]
     });
   }
 
@@ -49,9 +48,7 @@ export class ProfessoresComponent implements OnInit {
   selecionaProfessor(professorId: number): void {
     this.professorService.getById(professorId)
       .subscribe(
-        (professor) => {
-          this.mostrarForm(professorId, professor);
-        },
+        (professor) => { this.mostrarForm(professorId, professor); },
         (error: any) => { console.error(error); }
       );
   }

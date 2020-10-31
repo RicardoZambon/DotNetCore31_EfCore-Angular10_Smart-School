@@ -1,14 +1,9 @@
 <div class="row">
     <div class="col-sm-6" *ngIf="professorSelecionado">
         
-        <div class="row">
-            <div class="col mr-auto">
-                <app-titulo [titulo]="'Professor: ' + professorSelecionado.id"></app-titulo>
-            </div>
-            <div class="col-auto mt-2">
-                <button class="btn btn-danger" (click)="voltar()">Voltar</button>
-            </div>
-        </div>
+        <app-titulo [titulo]="(professorSelecionado.id == 0 ? 'Novo professor' : 'Professor: ' + professorSelecionado.id)">
+            <button class="btn btn-danger" (click)="voltar()">Voltar</button>
+        </app-titulo>
 
         <div class="card card-bg border">
             <div class="card-body">
@@ -23,7 +18,7 @@
                     </div> -->
                     <div>
                         <hr />
-                        <button type="submit" class="btn btn-primary" [disabled]="!professorForm.valid">Submit</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!professorForm.valid">Salvar</button>
                     </div>
                     <input type="hidden" formControlName="id">
                 </form>
@@ -32,7 +27,9 @@
     </div>
 
     <div class="col">
-        <app-titulo [titulo]=titulo></app-titulo>
+        <app-titulo [titulo]=titulo>
+            <button class="btn btn-success" (click)="novoProfessor()">Cadastrar professor</button>
+        </app-titulo>
 
         <div class="card overflow-hidden">
             <div class="card-body p-0">

@@ -31,24 +31,14 @@ export class AlunosComponent implements OnInit {
   }
 
   salvarAluno(alunoModel: Aluno): void {
-    if (alunoModel.id > 0) {
-      this.alunoService.put(alunoModel.id, alunoModel).subscribe(
+    this.alunoService[(alunoModel.id  != 0) ? 'put' : 'post'](alunoModel)
+      .subscribe(
         () => {
           this.carregarAlunos();
           this.alunoSelecionado = null;
         },
         (error: any) => { console.error(error); }
       );
-    }
-    else {
-      this.alunoService.post(alunoModel).subscribe(
-        () => {
-          this.carregarAlunos();
-          this.alunoSelecionado = null;
-        },
-        (error: any) => { console.error(error); }
-      );
-    }
   }
 
 
@@ -63,6 +53,11 @@ export class AlunosComponent implements OnInit {
 
   alunoSubmit() {
     this.salvarAluno(this.alunoForm.value);
+  }
+
+  novoAluno(): void {
+    this.alunoSelecionado = new Aluno;
+    this.alunoForm.patchValue(this.alunoSelecionado);
   }
 
   selecionaAluno(aluno: Aluno): void {

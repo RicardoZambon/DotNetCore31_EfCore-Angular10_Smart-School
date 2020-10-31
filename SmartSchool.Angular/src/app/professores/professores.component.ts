@@ -31,24 +31,13 @@ export class ProfessoresComponent implements OnInit {
   }
 
   salvarProfessor(professorModel: Professor): void {
-    if (professorModel.id > 0) {
-      this.professorService.put(professorModel.id, professorModel).subscribe(
-        () => {
-          this.carregarProfessores();
-          this.professorSelecionado = null;
-        },
-        (error: any) => { console.error(error); }
-      );
-    }
-    else {
-      this.professorService.post(professorModel).subscribe(
-        () => {
-          this.carregarProfessores();
-          this.professorSelecionado = null;
-        },
-        (error: any) => { console.error(error); }
-      );
-    }
+    this.professorService[(professorModel.id  != 0) ? 'put' : 'post'](professorModel).subscribe(
+      () => {
+        this.carregarProfessores();
+        this.professorSelecionado = null;
+      },
+      (error: any) => { console.error(error); }
+    );
   }
 
 
@@ -62,6 +51,11 @@ export class ProfessoresComponent implements OnInit {
 
   professorSubmit() {
     this.salvarProfessor(this.professorForm.value);
+  }
+
+  novoProfessor(): void {
+    this.professorSelecionado = new Professor();
+    this.professorForm.patchValue(this.professorSelecionado);
   }
 
   selecionaProfessor(professor: Professor): void {

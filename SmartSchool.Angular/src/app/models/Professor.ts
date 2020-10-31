@@ -4,4 +4,10 @@ export class Professor {
     public nome: string;
 
     public disciplina: string;
+
+    constructor() {
+        this.id = 0;
+        this.nome = '';
+        this.disciplina = '';
+    }
 }

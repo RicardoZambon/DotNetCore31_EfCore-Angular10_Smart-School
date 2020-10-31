@@ -25,8 +25,8 @@ export class ProfessorService {
     return this.http.post<Professor>(this.baseUrl, professor);
   }
 
-  put(professorId: number, professor: Professor): Observable<Professor> {
-    return this.http.put<Professor>(`${this.baseUrl}/${professorId}`, professor);
+  put(professor: Professor): Observable<Professor> {
+    return this.http.put<Professor>(`${this.baseUrl}/${professor.id}`, professor);
   }
 
   delete(professorId: number): Observable<Professor> {

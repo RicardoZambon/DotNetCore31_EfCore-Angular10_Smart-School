@@ -25,8 +25,8 @@ export class AlunoService {
     return this.http.post<Aluno>(this.baseUrl, aluno);
   }
 
-  put(alunoId: number, aluno: Aluno): Observable<Aluno> {
-    return this.http.put<Aluno>(`${this.baseUrl}/${alunoId}`, aluno);
+  put(aluno: Aluno): Observable<Aluno> {
+    return this.http.put<Aluno>(`${this.baseUrl}/${aluno.id}`, aluno);
   }
 
   delete(alunoId: number): Observable<Aluno> {

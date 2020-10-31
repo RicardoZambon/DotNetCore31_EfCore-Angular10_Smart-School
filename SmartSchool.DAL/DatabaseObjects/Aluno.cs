@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using SmartSchool.DAL.Interfaces;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SmartSchool.DAL.DatabaseObjects
 {
-    public class Aluno
+    public class Aluno : ISoftDelete
     {
         [Key]
         public int Id { get; set; }
@@ -16,6 +17,8 @@ namespace SmartSchool.DAL.DatabaseObjects
 
         [StringLength(50)]
         public string Telefone { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         public virtual ICollection<AlunoDisciplina> Disciplinas { get; set; }
     }

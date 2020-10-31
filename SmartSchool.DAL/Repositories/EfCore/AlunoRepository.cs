@@ -18,7 +18,11 @@ namespace SmartSchool.DAL.Repositories.EfCore
             => await context.AddAsync(aluno);
 
         public async Task DeleteAsync(Aluno aluno)
-            => await Task.Run(() => context.Remove(aluno)).ConfigureAwait(false);
+            => await Task.Run(async () =>
+            {
+                aluno.IsDeleted = true;
+                await UpdateAsync(aluno);
+            }).ConfigureAwait(false);
 
         public IQueryable<Aluno> GetAllAlunos()
             => context.Set<Aluno>().AsQueryable();

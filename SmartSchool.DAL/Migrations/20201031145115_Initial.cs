@@ -14,7 +14,8 @@ namespace SmartSchool.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(maxLength: 200, nullable: true),
                     Sobrenome = table.Column<string>(maxLength: 200, nullable: true),
-                    Telefone = table.Column<string>(maxLength: 50, nullable: true)
+                    Telefone = table.Column<string>(maxLength: 50, nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false, defaultValueSql: "0")
                 },
                 constraints: table =>
                 {
@@ -27,7 +28,8 @@ namespace SmartSchool.DAL.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(maxLength: 200, nullable: true)
+                    Nome = table.Column<string>(maxLength: 200, nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false, defaultValueSql: "0")
                 },
                 constraints: table =>
                 {
@@ -41,7 +43,8 @@ namespace SmartSchool.DAL.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(maxLength: 200, nullable: true),
-                    ProfessorId = table.Column<int>(nullable: false)
+                    ProfessorId = table.Column<int>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false, defaultValueSql: "0")
                 },
                 constraints: table =>
                 {

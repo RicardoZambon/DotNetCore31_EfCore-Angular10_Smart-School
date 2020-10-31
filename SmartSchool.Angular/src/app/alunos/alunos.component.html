@@ -40,19 +40,19 @@
                     <thead class="bg-primary text-white">
                         <tr>
                             <th scope="col" class="col-fit text-center"><i class="fas fa-cogs"></i></th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Sobrenome</th>
-                            <th scope="col">Telefone</th>
+                            <th scope="col" class="col-4">Nome</th>
+                            <th scope="col" class="col-4">Sobrenome</th>
+                            <th scope="col" class="col-4">Telefone</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let aluno of alunos">
-                            <th class="col-fit text-nowrap">
+                            <th class="text-nowrap">
                                 <button class="btn btn-sm btn-outline-danger" (click)="deletarAluno(aluno.id)"><i class="fas fa-trash-alt"></i></button>
                             </th>
-                            <td class="col-4 align-middle" (click)="selecionaAluno(aluno)">{{ aluno.nome }}</td>
-                            <td class="col-4 align-middle" (click)="selecionaAluno(aluno)">{{ aluno.sobrenome }}</td>
-                            <td class="col-3 align-middle" (click)="selecionaAluno(aluno)">{{ aluno.telefone }}</td>
+                            <td class="align-middle" (click)="selecionaAluno(aluno)">{{ aluno.nome }}</td>
+                            <td class="align-middle" (click)="selecionaAluno(aluno)">{{ aluno.sobrenome }}</td>
+                            <td class="align-middle" (click)="selecionaAluno(aluno)">{{ aluno.telefone }}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -31,7 +31,7 @@ export class AlunosComponent implements OnInit {
   }
 
   salvarAluno(alunoModel: Aluno): void {
-    this.alunoService[(alunoModel.id  != 0) ? 'put' : 'post'](alunoModel)
+    this.alunoService[(alunoModel.id  !== 0) ? 'put' : 'post'](alunoModel)
       .subscribe(
         () => {
           this.carregarAlunos();

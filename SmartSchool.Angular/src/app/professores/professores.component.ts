@@ -31,7 +31,7 @@ export class ProfessoresComponent implements OnInit {
   }
 
   salvarProfessor(professorModel: Professor): void {
-    this.professorService[(professorModel.id  != 0) ? 'put' : 'post'](professorModel).subscribe(
+    this.professorService[(professorModel.id  !== 0) ? 'put' : 'post'](professorModel).subscribe(
       () => {
         this.carregarProfessores();
         this.professorSelecionado = null;

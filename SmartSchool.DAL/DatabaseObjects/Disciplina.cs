@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SmartSchool.DAL.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace SmartSchool.DAL.DatabaseObjects
 {
-    public class Disciplina
+    public class Disciplina : ISoftDelete
     {
         [Key]
         public int Id { get; set; }
@@ -13,5 +14,7 @@ namespace SmartSchool.DAL.DatabaseObjects
         public int ProfessorId { get; set; }
 
         public virtual Professor Professor { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

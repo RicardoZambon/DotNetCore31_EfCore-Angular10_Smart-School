@@ -1,15 +1,9 @@
 <div class="row">
-    <div class="col-sm-6" *ngIf="professorSelecionado">
+    <div class="col-sm-6" *ngIf="professorSelecionadoId">
+        <app-titulo [titulo]="(professorSelecionadoId === -1 ? 'Novo professor' : 'Editar professor')">
+            <button class="btn btn-danger" (click)="voltar()">Voltar</button>
+        </app-titulo>
         
-        <div class="row">
-            <div class="col mr-auto">
-                <app-titulo [titulo]="'Professor: ' + professorSelecionado.id"></app-titulo>
-            </div>
-            <div class="col-auto mt-2">
-                <button class="btn btn-danger" (click)="voltar()">Voltar</button>
-            </div>
-        </div>
-
         <div class="card card-bg border">
             <div class="card-body">
                 <form [formGroup]="professorForm" (submit)="professorSubmit()">
@@ -17,42 +11,36 @@
                         <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" formControlName="nome">
                     </div>
-                    <div class="mb-3">
-                        <label for="disciplina" class="form-label">Disciplina</label>
-                        <input type="text" class="form-control" formControlName="disciplina">
+                    <div>
+                        <hr />
+                        <button type="submit" class="btn btn-primary" [disabled]="!professorForm.valid">Salvar</button>
                     </div>
-                    <button type="submit" class="btn btn-primary" [disabled]="!professorForm.valid">Submit</button>
+                    <input type="hidden" formControlName="id">
                 </form>
             </div>
         </div>
     </div>
 
     <div class="col">
-        <app-titulo [titulo]=titulo></app-titulo>
+        <app-titulo [titulo]=titulo>
+            <button class="btn btn-success" (click)="novoProfessor()">Novo professor</button>
+        </app-titulo>
 
         <div class="card overflow-hidden">
             <div class="card-body p-0">
-                <table class="table mb-0 table-hover">
+                <table class="table table-striped table-hover table-md mb-0 table-clickable-rows">
                     <thead class="bg-primary text-white">
                     <tr>
-                        <th scope="col">Visualizar</th>
-                        <th scope="col">#</th>
+                        <th scope="col" class="col-fit text-center"><i class="fas fa-cogs"></i></th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Disciplina</th>
-                        <th scope="col">Opções</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let professor of professores">
-                            <th><button class="btn btn-sm btn-outline-warning text-dark" (click)="selecionaProfessor(professor)">Detalhe</button></th>
-                            <th scope="row">{{ professor.id }}</th>
-                            <td>{{ professor.nome }}</td>
-                            <td>{{ professor.disciplina }}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button data-toggle="modal" data-target="#alunosModal" class="btn btn-sm btn-outline-primary">Alunos</button>
-                                </div>
-                            </td>
+                            <th class="col-fit text-nowrap">
+                                <button class="btn btn-sm btn-outline-danger" (click)="deletarProfessor(professor.id)"><i class="fas fa-trash-alt"></i></button>
+                            </th>
+                            <td class="col-6 align-middle" (click)="selecionaProfessor(professor.id)">{{ professor.nome }}</td>
                         </tr>
                     </tbody>
                 </table>

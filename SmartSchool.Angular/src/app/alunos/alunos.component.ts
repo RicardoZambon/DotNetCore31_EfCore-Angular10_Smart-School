@@ -1,53 +1,92 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Aluno } from '../models/Aluno';
+import { AlunoService } from './aluno.service';
 
 @Component({
   selector: 'app-alunos',
-  templateUrl: './alunos.component.html',
-  styleUrls: ['./alunos.component.css']
+  templateUrl: './alunos.component.html'
 })
 export class AlunosComponent implements OnInit {
 
-  public alunoForm: FormGroup;
   public titulo = 'Alunos';
-  public alunoSelecionado: Aluno;
+  
+  public alunos: Aluno[];
+  public alunoSelecionadoId: number;
+  public alunoForm: FormGroup;
 
-  public alunos = [    
-    { id: 1, nome: 'Marta', sobrenome: 'Kent', telefone: '33225555' },
-    { id: 2, nome: 'Paula', sobrenome: 'Isabela', telefone: '3354288' },
-    { id: 3, nome: 'Laura', sobrenome: 'Antonia', telefone: '55668899' },
-    { id: 4, nome: 'Luiza', sobrenome: 'Maria', telefone: '6565659' },
-    { id: 5, nome: 'Lucas', sobrenome: 'Machado', telefone: '565685415' },
-    { id: 6, nome: 'Pedro', sobrenome: 'Alvares', telefone: '466454545' },
-    { id: 7, nome: 'Paulo', sobrenome: 'José', telefone: '9874512' }
-  ];
-
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private alunoService: AlunoService, private cdr: ChangeDetectorRef) {
     this.criarForm();
   }
 
   ngOnInit(): void {
+    this.carregarAlunos();
   }
-
+  
   criarForm() {
     this.alunoForm = this.fb.group({
+      id: [0],
       nome: ['', Validators.required],
       sobrenome: ['', Validators.required],
       telefone: ['', Validators.required]
     });
   }
 
-  alunoSubmit() {
-    console.log(this.alunoForm.value);
+  mostrarForm(alunoId: number, aluno: Aluno): void {
+    this.alunoSelecionadoId = alunoId;
+    this.alunoForm.patchValue(aluno);
+    this.cdr.detectChanges();
+  }
+  
+
+  carregarAlunos(): void {
+    this.alunoService.getAll().subscribe(
+      (alunos) => { this.alunos = alunos; },
+      (error: any) => { console.error(error); }
+    );
   }
 
-  selecionaAluno(aluno: Aluno): void {
-    this.alunoSelecionado = aluno;
-    this.alunoForm.patchValue(aluno);
+  selecionaAluno(alunoId: number): void {
+    this.alunoService.getById(alunoId)
+      .subscribe(
+        (aluno) => { this.mostrarForm(alunoId, aluno); },
+        (error: any) => { console.error(error); }
+      );
+  }
+  
+  novoAluno(): void {
+    this.mostrarForm(-1, new Aluno);
+  }
+
+
+  alunoSubmit() {
+    this.salvarAluno(this.alunoForm.value);
+  }
+
+  salvarAluno(alunoModel: Aluno): void {
+    alunoModel.id = this.alunoSelecionadoId;
+    this.alunoService[(this.alunoSelecionadoId !== -1) ? 'put' : 'post'](alunoModel)
+      .subscribe(
+        () => {
+          this.carregarAlunos();
+          this.voltar();
+        },
+        (error: any) => { console.error(error); }
+      );
   }
 
   voltar(): void {
-    this.alunoSelecionado = null;
+    this.alunoSelecionadoId = 0;
+    this.alunoForm.patchValue(new Aluno);
+  }
+
+  deletarAluno(idAluno: number): void {
+    this.alunoService.delete(idAluno).subscribe(
+      () => {
+        this.carregarAlunos();
+        this.voltar();
+      },
+      (error: any) => { console.error(error); }
+    );
   }
 }

@@ -29,7 +29,7 @@ export class ProfessorService {
     return this.http.put<Professor>(`${this.baseUrl}/${professor.id}`, professor);
   }
 
-  delete(professorId: number): Observable<Professor> {
-    return this.http.delete<Professor>(`${this.baseUrl}/${professorId}`);
+  delete(professorId: number): Observable<Object> {
+    return this.http.delete(`${this.baseUrl}/${professorId}`);
   }
 }

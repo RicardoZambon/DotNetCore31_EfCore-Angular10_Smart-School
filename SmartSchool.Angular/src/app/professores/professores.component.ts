@@ -66,4 +66,14 @@ export class ProfessoresComponent implements OnInit {
   voltar() {
     this.professorSelecionado = null;
   }
+
+  deletarProfessor(idProfessor: number): void {
+    this.professorService.delete(idProfessor).subscribe(
+      () => {
+        this.carregarProfessores();
+        this.professorSelecionado = null;
+      },
+      (error: any) => { console.error(error); }
+    );
+  }
 }

@@ -84,11 +84,11 @@ namespace SmartSchool.WebApi.Controllers
         }
 
         [HttpDelete("{professorId}")]
-        public async Task<IActionResult> Delete(int alunoId)
+        public async Task<IActionResult> Delete(int professorId)
         {
             try
             {
-                if (await professorService.DeleteProfessorAsync(alunoId))
+                if (await professorService.DeleteProfessorAsync(professorId))
                 {
                     return Ok();
                 }

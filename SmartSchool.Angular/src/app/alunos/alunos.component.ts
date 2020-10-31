@@ -68,4 +68,14 @@ export class AlunosComponent implements OnInit {
   voltar(): void {
     this.alunoSelecionado = null;
   }
+
+  deletarAluno(idAluno: number): void {
+    this.alunoService.delete(idAluno).subscribe(
+      () => {
+        this.carregarAlunos();
+        this.alunoSelecionado = null;
+      },
+      (error: any) => { console.error(error); }
+    );
+  }
 }

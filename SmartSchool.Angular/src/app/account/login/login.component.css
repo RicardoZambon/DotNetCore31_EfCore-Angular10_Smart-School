@@ -3,24 +3,33 @@
     box-shadow: 15px 20px 0px rgba(0,0,0,0.1);
 }
 
-h2 {
-    font-weight: 800;
-    color: #DE6262;
+.title:after {
+    content: " ";
+    width: 75%;
+    height: 5px;
+    background: #68C2E8;
+    display: block;
+    margin-top: 20px;
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto;
 }
-    h2:after {
-        content: " ";
-        width: 25%;
-        height: 5px;
-        background: #FEB58A;
-        display: block;
-        margin-top: 20px;
-        border-radius: 3px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+
+.login-message {
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+    overflow: hidden;
+}
+.login-message.visible {
+    max-height: 100px;
+}
 
 .btn-login {
-    background: #DE6262;
+    background: #3cb0e1;
     color:#fff;
     font-weight:600;
+}
+
+.item-bg {
+    background: rgba(0,0,0,0.5);
 }

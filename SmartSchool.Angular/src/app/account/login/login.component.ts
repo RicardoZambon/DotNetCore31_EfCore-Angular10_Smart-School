@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { throwError } from 'rxjs';
+import { catchError, delay } from 'rxjs/operators';
 
 import { AccountService } from '../shared/account.service';
 import { LoginModel } from '../models/LoginModel';
@@ -14,7 +18,10 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router) {
+  public showMessage: boolean;
+  public loginMessage: string;
+
+  constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router, private cdr: ChangeDetectorRef) {
     this.createForm();
   }
 
@@ -29,16 +36,40 @@ export class LoginComponent implements OnInit {
   }
 
   authenticate(model: LoginModel): void {
-    this.accountService.authenticate(model).subscribe(
-      (response) => {
-        window.localStorage.setItem('token', response.token);
-        this.router.navigate(['']);
-      },
-      (error: any) => { console.error(error); }
-    )
+    this.accountService.authenticate(model)
+      .pipe(catchError(this.handleError))
+      .subscribe(
+        (response) => {
+          window.localStorage.setItem('token', response.token);
+          this.router.navigate(['']);
+        },
+        (error: any) => {
+          this.loginMessage = error;
+          this.showMessage = true;
+          console.log(error);
+        }
+      );
   }
 
   formSubmit(): void {
-    this.authenticate(this.loginForm.value);
+    this.showMessage = false;
+    setTimeout(() => 
+    {
+      this.loginMessage = null;
+      this.authenticate(this.loginForm.value);
+    },
+    500);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    switch (error.status)
+    {
+      case 0:
+        return throwError('Não foi possível comunicar com a API');
+      case 401:
+        return throwError('Usuário ou senha inválidos');
+      default:
+        return throwError(`Ocorreu um erro (${error.status}), se o problema persistir, favor entrar em contato.`);
+    }
   }
 }

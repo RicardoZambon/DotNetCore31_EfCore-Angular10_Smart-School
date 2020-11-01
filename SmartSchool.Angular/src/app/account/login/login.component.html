@@ -1,11 +1,16 @@
 <div class="d-flex h-100 justify-content-center align-items-center">
     <div class="container rounded">
         <div class="row">
-            <div class="col-md-4 px-4 py-5">
-                <div class="d-flex h-100 align-items-center">
+            <div class="col-md-4 px-4 py-3">
+                <div class="d-flex h-100">
                     <form class="w-100" [formGroup]="loginForm" (submit)="formSubmit()">
-                        <div>
-                            <h2 class="text-center mb-4">Login</h2>
+                        <div class="text-center mb-4 title">
+                            <img class="" src="/assets/images/logo.png" alt="Smart School" width="200" height="200" />
+                        </div>
+                        <div class="text-white mb-3 text-center login-message" [ngClass]="{'visible': showMessage}">
+                            <div class="p-2">
+                                <p class="mb-0 d-inline p-2 bg-danger rounded"><i class="fas fa-exclamation-circle pr-1"></i><strong>{{ loginMessage }}</strong></p>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="username" class="text-uppercase">Usuário</label>
@@ -37,22 +42,28 @@
                         <div class="carousel-item h-100 active">
                             <img class="d-block w-100" width="880" height="600" src="/assets/images/carousel/1.jpg" alt="First slide">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>This is Heaven</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                <div class="item-bg rounded p-2">
+                                    <h5>Sistema Smart School</h5>
+                                    <p class="text-justify mb-0">Gestão de alunos, professores e controle de notas. Tenha a informação que precisa para gerenciar sua escola.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="carousel-item h-100">
                             <img class="d-block w-100" width="880" height="600" src="/assets/images/carousel/2.jpg" alt="First slide">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>This is Heaven</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                <div class="item-bg rounded p-2">
+                                    <h5>Reuniões Online</h5>
+                                    <p class="text-justify mb-0">Queremos que você tenha o que há de melhor quando a opção é estudo, e pensando nisso criamos o módulo para reuniões online: estude, converse e aprenda!</p>
+                                </div>
                             </div>
                         </div>
                         <div class="carousel-item h-100">
                             <img class="d-block w-100" width="880" height="600" src="/assets/images/carousel/3.jpg" alt="First slide">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>This is Heaven</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                <div class="item-bg rounded p-2">
+                                    <h5>Biblioteca Virtual</h5>
+                                    <p class="text-justify mb-0">Quando o assunto é estudos, tenha em mãos a nossa biblioteca virtual, com ela você terá tudo que precisa para se aprofundar ainda mais em conhecimento.</p>
+                                </div>
                             </div>
                         </div>
                     </div>	   

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './account/login/login.component';
+import { ProfileComponent } from './account/profile/profile.component';
 import { AuthGuard } from './account/shared/auth.guard';
 import { AlunosComponent } from './alunos/alunos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DisciplinasComponent } from './disciplinas/disciplinas.component';
 import { AuthComponent } from './layout/auth/auth.component';
 import { HomeComponent } from './layout/home/home.component';
-import { PerfilComponent } from './perfil/perfil.component';
 import { ProfessoresComponent } from './professores/professores.component';
 
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'alunos', component: AlunosComponent},
-      { path: 'perfil', component: PerfilComponent },
+      { path: 'perfil', component: ProfileComponent },
       { path: 'professores', component: ProfessoresComponent },
       { path: 'disciplinas', component: DisciplinasComponent }
     ],

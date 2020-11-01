@@ -1,0 +1,63 @@
+<div class="d-flex h-100 justify-content-center align-items-center">
+    <div class="container rounded">
+        <div class="row">
+            <div class="col-md-4 px-4 py-5">
+                <div class="d-flex h-100 align-items-center">
+                    <form class="w-100" [formGroup]="loginForm" (submit)="formSubmit()">
+                        <div>
+                            <h2 class="text-center mb-4">Login</h2>
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="text-uppercase">Usuário</label>
+                            <input type="text" class="form-control" placeholder="" formControlName="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="text-uppercase">Senha</label>
+                            <input type="password" class="form-control" placeholder="" formControlName="password">
+                        </div>
+                        <div>
+                            <div class="form-check form-switch float-left">
+                                <input type="checkbox" class="form-check-input">
+                                <label class="form-check-label" for=""><small>Lembrar de mim</small></label>
+                            </div>
+                            <button type="submit" class="btn btn-login float-right" [disabled]="!loginForm.valid">Entrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-8 p-0 rounded-right banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide h-100" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner rounded-right h-100">
+                        <div class="carousel-item h-100 active">
+                            <img class="d-block w-100" width="880" height="600" src="/assets/images/carousel/1.jpg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>This is Heaven</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img class="d-block w-100" width="880" height="600" src="/assets/images/carousel/2.jpg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>This is Heaven</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img class="d-block w-100" width="880" height="600" src="/assets/images/carousel/3.jpg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>This is Heaven</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                            </div>
+                        </div>
+                    </div>	   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

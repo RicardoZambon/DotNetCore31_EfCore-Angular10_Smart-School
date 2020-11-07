@@ -15,6 +15,16 @@
     margin-right: auto;
 }
 
+.input-group-text {
+    background: #68C2E8;
+    color: #FFF;
+    border-color: #3cb0e1;
+}
+
+.input-group .form-control {
+    border-left-color: #3cb0e1;
+}
+
 .login-message {
     max-height: 0;
     transition: max-height 0.5s ease-out;
@@ -32,4 +42,29 @@
 
 .item-bg {
     background: rgba(0,0,0,0.5);
+}
+
+.carousel-item .carousel-background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-inner .carousel-item:nth-child(1) .carousel-background {
+    background-image: url(/assets/images/carousel/1.jpg);
+}
+
+.carousel-inner .carousel-item:nth-child(2) .carousel-background {
+    background-image: url(/assets/images/carousel/2.jpg);
+}
+
+.carousel-inner .carousel-item:nth-child(3) .carousel-background {
+    background-image: url(/assets/images/carousel/3.jpg);
+}
+
+
+@media (min-width: 1200px) {
+    .carousel-background {
+        min-height: 600px;
+    }
 }
